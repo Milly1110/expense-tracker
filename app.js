@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 const app = express()
 const PORT = 3000
 
+app.engine('hbs', exphbs({ defaulyLayout: 'main', extname: '.hbs' }))
+app.set('view engine', 'hbs')
+
 mongoose.connect('mongodb://localhost/record-list', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', () => {
@@ -15,7 +18,7 @@ db.once('open', () => {
 })
 
 app.get('/', (req, res) => {
-  res.send('This is expense-tracker app.')
+  res.render('index')
 })
 
 app.listen(PORT, () => {
