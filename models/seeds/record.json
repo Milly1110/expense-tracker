@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "name": "早餐",
+      "category": "餐飲",
+      "date": "2020/5/10",
+      "amount": 30
+    },
+    {
+      "name": "午餐",
+      "category": "餐飲",
+      "date": "2020/5/10",
+      "amount": 90
+    },
+    {
+      "name": "計程車",
+      "category": "交通",
+      "date": "2020/5/19",
+      "amount": 390
+    }
+  ]
+}
