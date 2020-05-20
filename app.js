@@ -1,8 +1,9 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const Record = require('./models/record')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+const Record = require('./models/record')
 
 const app = express()
 const PORT = 3000
@@ -20,6 +21,7 @@ db.once('open', () => {
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 //read all record
 app.get('/', (req, res) => {
@@ -34,7 +36,7 @@ app.get('/records/new', (req, res) => {
 })
 app.post('/records', (req, res) => {
   const { name, category, date, amount } = req.body
-  return Record.create({ name, category, date, amount })
+  return Record.create(req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -46,22 +48,24 @@ app.get('/records/:id/edit', (req, res) => {
     .then(record => res.render('edit', { record }))
     .catch(error => console.log(error))
 })
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   const { name, category, date, amount } = req.body
   return Record.findById(id)
     .then(record => {
-      record.name = name
-      record.category = category
-      record.date = date
-      record.amount = amount
+      // record.name = name
+      // record.category = category
+      // record.date = date
+      // record.amount = amount
+      //參考A11作業助教批改的建議修改成Object.assign的寫法
+      record = Object.assign(record, req.body)
       return record.save()
     })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 //delete specified record
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
