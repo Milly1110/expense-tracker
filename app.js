@@ -38,6 +38,28 @@ app.post('/records', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+//update record
+app.get('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then(record => res.render('edit', { record }))
+    .catch(error => console.log(error))
+})
+app.post('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  const { name, category, date, amount } = req.body
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.category = category
+      record.date = date
+      record.amount = amount
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)
