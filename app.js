@@ -21,14 +21,14 @@ db.once('open', () => {
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//read all
+//read all record
 app.get('/', (req, res) => {
   Record.find()
     .lean()
     .then(records => res.render('index', { records }))
     .catch(error => console.log(error))
 })
-//create new
+//create new record
 app.get('/records/new', (req, res) => {
   return res.render('new')
 })
@@ -38,7 +38,7 @@ app.post('/records', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-//update record
+//update specified record
 app.get('/records/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
@@ -60,6 +60,15 @@ app.post('/records/:id/edit', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+//delete specified record
+app.post('/records/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => record.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)
