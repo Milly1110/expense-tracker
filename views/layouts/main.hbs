@@ -17,19 +17,28 @@
 </head>
 
 <body>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="fas fa-calculator"></i>
-        家庭記帳本
-      </a>
-      <div>
-        <a href="/records/new"><i class="fas fa-folder-plus"></i> 新增支出</a>
+  <header>
+    <!-- navigation -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <i class="fas fa-calculator"></i>
+          家庭記帳本
+        </a>
+        <div>
+          <a href="/records/new"><i class="fas fa-folder-plus"></i> 新增支出</a>
+        </div>
       </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container mt-3">
+      {{{body}}}
     </div>
-  </nav>
-  {{{body}}}
+
+  </main>
+
 
   {{!-- include Bootstrap JS CDN --}}
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

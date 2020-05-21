@@ -1,10 +1,11 @@
-header {
-  overflow: hidden;
-  
-}
+
 li:nth-of-type(even) {
   background-color: #F5F5F5;
 }
 li:nth-of-type(odd) {
   background-color: #D9D9D9;
+}
+.dropdown {
+  position: relative;
+  width: 550px;
 }
