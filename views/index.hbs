@@ -1,17 +1,58 @@
-<div class="container">
-  <ul>
-    {{#each records}}
-    <li>
-      {{this.name}}
-      {{this.category}}
-      {{this.date}}
-      {{this.amount}}
-      <a href="./records/{{this._id}}/edit">修改</a>
-      <form action="./records/{{this._id}}?_method=delete" method="post" style="display: inline;">
-        <button type="submit">整筆刪除</button>
-      </form>
-    </li>
-    {{/each}}
-    <a href="/records/new" style="color: orange;">新增支出</a>
-  </ul>
+<div class="container mt-3">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+      {{!-- 下拉選單做類別篩選 --}}
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          類別
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">家居物業</a>
+          <a class="dropdown-item" href="#">交通出行</a>
+          <a class="dropdown-item" href="#">休閒娛樂</a>
+          <a class="dropdown-item" href="#">餐飲食品</a>
+          <a class="dropdown-item" href="#">其他</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    {{!-- 計算總金額 --}}
+    <div class="totalAmount">
+      <h3>總金額:500</h3>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    {{!-- 紀錄清單 --}}
+    <div class='recorditem'>
+      <ul class="list-group">
+        {{#each records}}
+        <li class="list-group-item" style="width: 40em;">
+          <div class="row mt-3">
+            <h4 style="display: inline; text-align: left;">{{this.category}}</h4>
+            <div class="col-auto mr-auto">
+              <h4 style="display: inline; text-align: middle;">{{this.name}}</h4>
+              <p style="display: block; text-align: middle;">{{this.date}}</p>
+            </div>
+            <h2 style="display: inline; text-align: right;">{{this.amount}}</h2>
+            <div class="col-auto">
+              <a class="btn btn-outline-secondary" href="./records/{{this._id}}/edit">修改</a>
+              <form action="./records/{{this._id}}?_method=delete" method="post" style="display: inline;">
+                <button class="btn btn-outline-danger" type="submit">刪除</button>
+              </form>
+            </div>
+          </div>
+        </li>
+        {{/each}}
+        <a href="/records/new" style="color: orange;">新增支出</a>
+      </ul>
+    </div>
+
+  </div>
+
+
+
 </div>
