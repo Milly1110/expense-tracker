@@ -2,17 +2,31 @@
   <div class="col-md-auto">
     {{!-- 下拉選單做類別篩選 --}}
     <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        類別
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">家居物業</a>
-        <a class="dropdown-item" href="#">交通出行</a>
-        <a class="dropdown-item" href="#">休閒娛樂</a>
-        <a class="dropdown-item" href="#">餐飲食品</a>
-        <a class="dropdown-item" href="#">其他</a>
-      </div>
+      <form action="/records/category" method="get" name="filterCategory">
+        {{!-- <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" name="filter">
+          {{filter}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" value="家居物業">家居物業</a>
+          <a class="dropdown-item" value="交通出行">交通出行</a>
+          <a class="dropdown-item" value="休閒娛樂">休閒娛樂</a>
+          <a class="dropdown-item" value="餐飲食品">餐飲食品</a>
+          <a class="dropdown-item" value="其他">其他</a>
+        </div> --}}
+
+        <select class="form-control" id="filter-category" name="filter" onchange="submit()">
+          <option>{{filter}}</option>
+          <option value="餐飲食品">餐飲食品</option>
+          <option value="休閒娛樂">休閒娛樂</option>
+          <option value="家居物業">家居物業</option>
+          <option value="交通出行">交通出行</option>
+          <option value="其他">其他</option>
+          <option value="">全部支出</option>
+        </select>
+
+      </form>
+
     </div>
   </div>
 </div>
@@ -20,7 +34,7 @@
 <div class="row justify-content-center">
   {{!-- 計算總金額 --}}
   <div class="totalAmount">
-    <h3>總金額:500</h3>
+    <h3>{{totalAmount}}</h3>
   </div>
 </div>
 
@@ -31,7 +45,7 @@
       {{#each records}}
       <li class="list-group-item" style="width: 40em;">
         <div class="row mt-3">
-          <h4 style="display: inline; text-align: left;">{{this.category}}</h4>
+          <h4 style="display: inline; text-align: left;">{{{this.icon}}}</h4>
           <div class="col-auto mr-auto">
             <h4 style="display: inline; text-align: middle;">{{this.name}}</h4>
             <p style="display: block; text-align: middle;">{{this.date}}</p>

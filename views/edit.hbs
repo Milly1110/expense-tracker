@@ -1,4 +1,4 @@
-<h2>請修改你的支出</h2>
+{{!-- <h2>請修改你的支出</h2>
 <form action="/records/{{record._id}}?_method=PUT" method="post">
   <input type="text" placeholder="支出名稱" name="name" value="{{record.name}}">
   <input type="text" placeholder="支出日期" name="date" value="{{record.date}}">
@@ -6,4 +6,56 @@
   <input type="number" placeholder="支出金額" name="amount" value="{{record.amount}}">
   <button type="submit">儲存</button>
   <a href="/">返回</a>
-</form>
+</form> --}}
+
+<div class="container">
+
+  <div class="col-12">
+    <h2>請修改你的支出</h2>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-12">
+      <form action="/records/{{record._id}}?_method=PUT" method="post">
+        <div class="form-group row">
+          <label for="name">名稱 : </label>
+          <div class="col-sm-10">
+            <input type="text" placeholder="輸入支出名稱" name="name" value="{{record.name}}" style="display: block;">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="date">日期 : </label>
+          <div class="col-sm-10">
+            <input type="date" placeholder="支出日期" name="date" value="{{record.date}}" style="display: block;">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="category">類別 : </label>
+          <div class="col-sm-10">
+            <select name="category" value="{{record.category}}">
+              <option name="category" value="家居物業">家居物業</option>
+              <option name="category" value="交通出行">交通出行</option>
+              <option name="category" value="休閒娛樂">休閒娛樂</option>
+              <option name="category" value="餐飲食品">餐飲食品</option>
+              <option name="category" value="其他">其他</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="amount">金額 : </label>
+          <div class="col-sm-10">
+            <input type="number" placeholder="支出金額" name="amount" min="0" value="{{record.amount}}"
+              style="display: block;">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary">儲存</button>
+        <a href="/"><i class="fas fa-undo"></i>返回</a>
+      </form>
+
+    </div>
+  </div>
+
+</div>
