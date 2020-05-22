@@ -3,17 +3,6 @@
     {{!-- 下拉選單做類別篩選 --}}
     <div class="dropdown">
       <form action="/records/category" method="get" name="filterCategory">
-        {{!-- <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" name="filter">
-          {{filter}}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" value="家居物業">家居物業</a>
-          <a class="dropdown-item" value="交通出行">交通出行</a>
-          <a class="dropdown-item" value="休閒娛樂">休閒娛樂</a>
-          <a class="dropdown-item" value="餐飲食品">餐飲食品</a>
-          <a class="dropdown-item" value="其他">其他</a>
-        </div> --}}
 
         <select class="form-control" id="filter-category" name="filter" onchange="submit()">
           <option>{{filter}}</option>
@@ -52,8 +41,9 @@
           </div>
           <h2 style="display: inline; text-align: right;">{{this.amount}}</h2>
           <div class="col-auto">
-            <a class="btn btn-outline-secondary" href="./records/{{this._id}}/edit"><i class="fas fa-edit"></i> 修改</a>
-            <form action="./records/{{this._id}}?_method=delete" method="post" style="display: inline;">
+            <a class="btn btn-outline-secondary" href="/records/{{this._id}}/edit"><i class="fas fa-edit"></i> 修改</a>
+            <form action="/records/{{this._id}}?_method=delete" method="post" style="display: inline;"
+              onsubmit="return confirm('確認刪除此筆支出紀錄?')">
               <button class="btn btn-outline-danger" type="submit"><i class="fas fa-trash-alt"></i> 刪除</button>
             </form>
           </div>

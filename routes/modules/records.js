@@ -19,6 +19,14 @@ router.get('/category', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// router.get('/:id', (req, res) => {
+//   const id = req.params.id
+//   Record.findById(id)
+//     .lean()
+//     .then(record => { res.render('edit', { record }) })
+//     .catch(error => console.log(error))
+// })
+
 //create new record
 router.get('/new', (req, res) => {
   return res.render('new')
