@@ -1,29 +1,25 @@
-<div class="row justify-content-md-center">
-  <div class="col-md-auto">
+<div class="row justify-content-center">
+  <div class="col-md-auto" style="width: 40%;">
     {{!-- 下拉選單做類別篩選 --}}
-    <div class="dropdown">
-      <form action="/records/category" method="get" name="filterCategory">
-
-        <select class="form-control" id="filter-category" name="filter" onchange="submit()">
-          <option>{{filter}}</option>
-          <option value="餐飲食品">餐飲食品</option>
-          <option value="休閒娛樂">休閒娛樂</option>
-          <option value="家居物業">家居物業</option>
-          <option value="交通出行">交通出行</option>
-          <option value="其他">其他</option>
-          <option value="">全部支出</option>
-        </select>
-
-      </form>
-
-    </div>
+    <form action="/records/category" method="get" name="filterCategory">
+      <select class="form-control" id="filter-category" name="filter" onchange="submit()">
+        <option>{{filter}}</option>
+        <option value="餐飲食品">餐飲食品</option>
+        <option value="休閒娛樂">休閒娛樂</option>
+        <option value="家居物業">家居物業</option>
+        <option value="交通出行">交通出行</option>
+        <option value="其他">其他</option>
+        <option value="">全部支出</option>
+      </select>
+    </form>
   </div>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center my-3">
   {{!-- 計算總金額 --}}
   <div class="totalAmount">
-    <h3>{{totalAmount}}</h3>
+    <font face="微軟正黑體" class="totalDisplay">總金額為:</font> <strong class="totalAmount">{{totalAmount}}</strong>
+
   </div>
 </div>
 
@@ -32,7 +28,7 @@
   <div class='recorditem'>
     <ul class="list-group">
       {{#each records}}
-      <li class="list-group-item" style="width: 40em;">
+      <li class="list-group-item">
         <div class="row mt-3">
           <h4 style="display: inline; text-align: left;">{{{this.icon}}}</h4>
           <div class="col-auto mr-auto">
@@ -54,4 +50,4 @@
     </ul>
   </div>
 
-</div>
+  {{!-- </div> --}}

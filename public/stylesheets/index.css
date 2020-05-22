@@ -1,3 +1,10 @@
+body{
+  background: linear-gradient(90deg, #B1CFE8 29%, #C6CCBE 60%);
+  background: -moz-linear-gradient(90deg, #B1CFE8 29%, #C6CCBE 60%);
+  background: -webkit-linear-gradient(90deg, #B1CFE8 29%, #C6CCBE 60%);
+  background: -o-linear-gradient(90deg, #B1CFE8 29%, #C6CCBE 60%);
+  background-size: auto;
+}
 
 li:nth-of-type(even) {
   background-color: rgb(226, 223, 223);
@@ -5,7 +12,44 @@ li:nth-of-type(even) {
 li:nth-of-type(odd) {
   background-color: rgba(235, 211, 211, 0.623);
 }
-.dropdown {
-  position: relative;
-  width: 550px;
+.totalDisplay{
+  font-size: 20px;
+  padding-right: 20px;
+}
+strong{
+ font-size: 80px;
+}
+select{
+  font-family: 'Microsoft JhengHei';
+}
+.form-control{
+  width: 230px;
+}
+
+@media(min-width: 576px) {
+  .list-group-item{
+    width: 300px;
+    height: 150px;
+    margin: 2px;
+    border-radius: 5px 35px;
+  }
+  .row{
+    font-size: 14px;
+  }
+  h4{
+    font-size: 14px;
+  }
+}
+
+@media(min-width: 768px) {
+  .list-group-item{
+    width: 600px;
+    margin: 2px;
+  }
+  .row{
+    font-size: 20px;
+  }
+  h4{
+    font-size: 20px;
+  }
 }
