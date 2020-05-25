@@ -9,10 +9,12 @@ router.get('/category', (req, res) => {
     .lean()
     .then(records => {
       let totalAmount = 0
-      const promise = []
+      //參考助教指導，修改多餘的變數
+      // const promise = []
       for (let i = 0; i < records.length; i++) {
-        promise.push(records[i])
-        totalAmount += Number(promise[i].amount)
+        // promise.push(records[i])
+        // totalAmount += Number(promise[i].amount)
+        totalAmount += Number(records[i].amount)
       }
       res.render('index', { records, totalAmount, filter })
     })
